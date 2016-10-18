@@ -43,7 +43,8 @@
                "dockerStrategy": {
                   "from": {
                      "kind": "ImageStreamTag",
-                     "name": "wildfly:10"
+                     "namespace": "openshift",
+                     "name": "wildfly:10.0"
                   }
                }
             },
