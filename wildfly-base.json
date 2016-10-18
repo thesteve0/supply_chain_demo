@@ -1,0 +1,81 @@
+{
+   "kind": "List",
+   "apiVersion": "v1",
+   "metadata": {
+      "name": "wildfly-base"
+   },
+   "items": [
+        {
+         "kind": "BuildConfig",
+         "apiVersion": "v1",
+         "metadata": {
+            "name": "wildfly-base"
+         },
+         "spec": {
+            "triggers": [
+               {
+                  "type": "GitHub",
+                  "github": {
+                     "secret": "secret"
+                  }
+               },
+               {
+                  "type": "Generic",
+                  "generic": {
+                     "secret": "secret"
+                  }
+               },
+               {
+                  "type": "ImageChange",
+                  "imageChange": {}
+               }
+            ],
+            "source": {
+               "type": "Git",
+               "git": {
+                  "uri": "http://gitlab.apps.10.2.2.2.xip.io/user/supply_chain_demo.git",
+                  "ref": "master"
+               },
+               "contextDir": "wildfly-base"
+            },
+            "strategy": {
+               "type": "Docker",
+               "dockerStrategy": {
+                  "from": {
+                     "kind": "ImageStreamTag",
+                     "name": "wildfly:10"
+                  }
+               }
+            },
+            "output": {
+               "to": {
+                  "kind": "ImageStreamTag",
+                  "name": "wildfly-base:latest"
+               }
+            },
+            "resources": {}
+         }
+      },
+      {
+         "apiVersion": "v1",
+         "kind": "ImageStream",
+         "metadata": {
+            "name": "wildfly-base"
+         },
+         "spec": {
+            "tags": [
+               {
+                  "annotations": {
+                     "description": "This is the official wildfly s2i build for our company",
+                     "iconClass": "icon-wildfly",
+                     "supports": "wildfly:10.0,jee,java",
+                     "tags": "builder,wildfly,java,nexus,molw",
+                     "version": "10.0"
+                  },
+                  "name": "latest"
+               }
+            ]
+         }
+      }
+   ]
+}
