@@ -33,7 +33,7 @@
             "source": {
                "type": "Git",
                "git": {
-                  "uri": "http://gitlab.apps.10.2.2.2.xip.io/user/supply_chain_demo.git",
+                  "uri": "https://github.com/thesteve0/supply_chain_demo.git",
                   "ref": "master"
                },
                "contextDir": "wildfly-base"
