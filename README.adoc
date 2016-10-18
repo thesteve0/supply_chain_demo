@@ -1,4 +1,5 @@
 = Supply Chain demo
+
 Build this Docker Image in OpenShift which will create an ImageStream. Then use this ImageStream as a Builder for a Wildfly project.
 
 Then "patch" this image and force a rebuild of the builder, which will then force a change of the final built image.
